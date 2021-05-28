@@ -1,5 +1,6 @@
 export default function folderInput () {
   return {
+    name: 'folderInput',
     options (options) {
       options = options || {}
 
