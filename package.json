@@ -1,0 +1,36 @@
+{
+	"name": "rollup-plugin-folder-input",
+	"version": "1.0.0",
+	"description": "Rollup plugin to allow specification of 'input' array using globs",
+	"main": "src/index.js",
+	"exports": {
+		"import": "./lib/index.mjs",
+		"require": "./lib/index.cjs"
+	},
+	"type": "module",
+	"files": [
+		"lib/index.mjs",
+		"lib/index.cjs"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dgkimpton/rollup-plugin-folder-input.git"
+	},
+	"keywords": [
+		"rollup",
+		"input",
+		"glob",
+		"folder",
+		"plugin",
+		"rollup-plugin"
+	],
+	"author": "Duncan Kimpton",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/dgkimpton/rollup-plugin-folder-input/issues"
+	},
+	"homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme"
+}
