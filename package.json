@@ -32,5 +32,8 @@
 	"bugs": {
 		"url": "https://github.com/dgkimpton/rollup-plugin-folder-input/issues"
 	},
-	"homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme"
+	"homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme",
+	"devDependencies": {
+		"standard": "^16.0.3"
+	}
 }
