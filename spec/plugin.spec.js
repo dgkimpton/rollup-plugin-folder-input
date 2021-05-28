@@ -100,5 +100,44 @@ describe('folder input plugin', function () {
         expect(opt.input).toContain('./spec/array-test/d.js')
       })
     })
+
+    describe('when provided with an object of input specifications', function () {
+      let opt
+      beforeEach(function () {
+        opt = {
+          input: {
+            x: './spec/glob-test/**',
+            y: 'README.md',
+            'z/t': ['./spec/array-test/**', 'LICENSE']
+          }
+        }
+        hook(opt)
+      })
+
+      it('keys with individual filenames to remain unchanged', function () {
+        expect(opt.input.y).toBe('README.md')
+      })
+
+      it('keys with globs to have been expanded to be arrays', function () {
+        expect(Array.isArray(opt.input.x)).toBeTrue()
+        expect(opt.input.x).toContain('./spec/glob-test/a.js')
+        expect(opt.input.x).toContain('./spec/glob-test/b.js')
+      })
+
+      it('keys with globs to not contain the glob anymore', function () {
+        expect(opt.input.y).not.toContain('./spec/glob-test/**')
+      })
+
+      it('keys with globs and individual filenames to have been expanded to be include files matched by the glob', function () {
+        expect(Array.isArray(opt.input['z/t'])).toBeTrue()
+        expect(opt.input['z/t']).toContain('./spec/array-test/c.js')
+        expect(opt.input['z/t']).toContain('./spec/array-test/d.js')
+        expect(opt.input['z/t']).toContain('LICENSE')
+      })
+
+      it('keys with globs and individual filenames to no longer contain the globs', function () {
+        expect(opt.input['z/t']).not.toContain('./spec/array-test/**')
+      })
+    })
   })
 })
