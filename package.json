@@ -43,5 +43,7 @@
     "standard": "^16.0.3",
     "trash-cli": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fast-glob": "^3.2.5"
+  }
 }
