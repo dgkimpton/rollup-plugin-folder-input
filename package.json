@@ -1,39 +1,43 @@
 {
-	"name": "rollup-plugin-folder-input",
-	"version": "1.0.0",
-	"description": "Rollup plugin to allow specification of 'input' array using globs",
-	"main": "src/index.js",
-	"exports": {
-		"import": "./lib/index.mjs",
-		"require": "./lib/index.cjs"
-	},
-	"type": "module",
-	"files": [
-		"lib/index.mjs",
-		"lib/index.cjs"
-	],
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/dgkimpton/rollup-plugin-folder-input.git"
-	},
-	"keywords": [
-		"rollup",
-		"input",
-		"glob",
-		"folder",
-		"plugin",
-		"rollup-plugin"
-	],
-	"author": "Duncan Kimpton",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/dgkimpton/rollup-plugin-folder-input/issues"
-	},
-	"homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme",
-	"devDependencies": {
-		"standard": "^16.0.3"
-	}
+  "name": "rollup-plugin-folder-input",
+  "version": "1.0.0",
+  "description": "Rollup plugin to allow specification of 'input' array using globs",
+  "main": "src/index.js",
+  "exports": {
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.cjs"
+  },
+  "type": "module",
+  "files": [
+    "lib/index.mjs",
+    "lib/index.cjs"
+  ],
+  "scripts": {
+    "build": "trash ./lib/**/* && rollup -c rollup.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgkimpton/rollup-plugin-folder-input.git"
+  },
+  "keywords": [
+    "rollup",
+    "input",
+    "glob",
+    "folder",
+    "plugin",
+    "rollup-plugin"
+  ],
+  "author": "Duncan Kimpton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgkimpton/rollup-plugin-folder-input/issues"
+  },
+  "homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme",
+  "devDependencies": {
+    "rollup": "^2.50.3",
+    "standard": "^16.0.3",
+    "trash-cli": "^4.0.0"
+  },
+  "dependencies": {}
 }
