@@ -1,7 +1,9 @@
 export default {
   input: './spec/plugin.spec.js',
   plugins: [],
-  external: [],
+  external: [
+    'fast-glob'
+  ],
   output: {
     dir: '.tests',
     format: 'cjs',

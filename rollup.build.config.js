@@ -1,6 +1,9 @@
 export default [
   {
     input: './src/index.js',
+    external: [
+      'fast-glob'
+    ],
     output: {
       file: './lib/index.mjs',
       format: 'esm',
@@ -10,6 +13,9 @@ export default [
   },
   {
     input: './src/index.js',
+    external: [
+      'fast-glob'
+    ],
     output: {
       file: './lib/index.cjs',
       format: 'cjs'
