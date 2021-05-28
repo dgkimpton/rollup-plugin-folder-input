@@ -12,12 +12,13 @@
     "lib/index.cjs"
   ],
   "scripts": {
-    "prebuild": "trash ./lib/**/*",
-    "build": "rollup -c rollup.build.config.js",
     "prebuild-tests": "trash ./.tests/**/*",
     "build-tests": "rollup -c rollup.testing.config.js",
     "pretest": "npm run build-tests",
-    "test": "jasmine --config=jasmine.json"
+    "test": "jasmine --config=jasmine.json",
+    "clean-build": "trash ./lib/**/*",
+    "prebuild": "npm run clean-build && npm run test",
+    "build": "rollup -c rollup.build.config.js"
   },
   "repository": {
     "type": "git",

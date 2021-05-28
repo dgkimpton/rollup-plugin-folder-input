@@ -1,6 +1,6 @@
 import fg from 'fast-glob'
 
-export default function folderInput () {
+export function folderInput () {
   return {
     name: 'folderInput',
     options (options) {
