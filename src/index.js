@@ -13,6 +13,11 @@ export default function folderInput () {
       if (typeof options.input === 'string') {
         const found = fg.sync([options.input])
         options.input = (found.length === 1) ? found[0] : found
+        return
+      }
+
+      if (Array.isArray(options.input)) {
+        options.input = fg.sync(options.input)
       }
     }
   }

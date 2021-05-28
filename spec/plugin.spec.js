@@ -72,5 +72,33 @@ describe('folder input plugin', function () {
         expect(opt.input).toContain('./spec/glob-test/b.js')
       })
     })
+
+    describe('when provided with an array of inputs', function () {
+      let opt
+      beforeEach(function () {
+        opt = { input: ['./spec/glob-test/**', 'README.md', './spec/array-test/**'] }
+        hook(opt)
+      })
+
+      it('leaves input as an array', function () {
+        expect(Array.isArray(opt.input)).toBeTrue()
+      })
+
+      it('leaves the original raw filenames in the array', function () {
+        expect(opt.input).toContain('README.md')
+      })
+
+      it('removes the original glob input strings', function () {
+        expect(opt.input).not.toContain('./spec/glob-test/**')
+        expect(opt.input).not.toContain('./spec/array-test/**')
+      })
+
+      it('adds the set of all matched filenames', function () {
+        expect(opt.input).toContain('./spec/glob-test/a.js')
+        expect(opt.input).toContain('./spec/glob-test/b.js')
+        expect(opt.input).toContain('./spec/array-test/c.js')
+        expect(opt.input).toContain('./spec/array-test/d.js')
+      })
+    })
   })
 })
