@@ -1,4 +1,13 @@
 {
   "editor.stickyTabStops": true,
-  "javascript.format.insertSpaceBeforeFunctionParenthesis": true
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "runOnSave.commands": [
+    {
+      "match": ".*?\\\\(spec|src)\\\\.*\\.(js|mjs)$",
+      "command": "npm test --silent",
+      "runIn": "backend",
+      "runningStatusMessage": "T E S T I N G",
+      "finishStatusMessage": "tested"
+    }
+  ]
 }
