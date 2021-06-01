@@ -1,5 +1,4 @@
 /* eslint-env jasmine */
-
 import { folderInput } from '../src/index.js'
 
 const sampleFolder = './spec.sample-data/'
@@ -62,7 +61,7 @@ describe('folder input plugin', function () {
       })
 
       it('changes the input into an array', function () {
-        expect(Array.isArray(opt.input)).toBeTrue()
+        expect(Array.isArray(opt.input)).toBe(true)
       })
 
       it('removes the original input string', function () {
@@ -83,7 +82,7 @@ describe('folder input plugin', function () {
       })
 
       it('leaves input as an array', function () {
-        expect(Array.isArray(opt.input)).toBeTrue()
+        expect(Array.isArray(opt.input)).toBe(true)
       })
 
       it('leaves the original raw filenames in the array', function () {
@@ -121,7 +120,7 @@ describe('folder input plugin', function () {
       })
 
       it('keys with globs to have been expanded to be arrays', function () {
-        expect(Array.isArray(opt.input.x)).toBeTrue()
+        expect(Array.isArray(opt.input.x)).toBe(true)
         expect(opt.input.x).toContain(sampleFolder + 'glob-test/a.js')
         expect(opt.input.x).toContain(sampleFolder + 'glob-test/b.js')
       })
@@ -131,7 +130,7 @@ describe('folder input plugin', function () {
       })
 
       it('keys with globs and individual filenames to have been expanded to be include files matched by the glob', function () {
-        expect(Array.isArray(opt.input['z/t'])).toBeTrue()
+        expect(Array.isArray(opt.input['z/t'])).toBe(true)
         expect(opt.input['z/t']).toContain(sampleFolder + 'array-test/c.js')
         expect(opt.input['z/t']).toContain(sampleFolder + 'array-test/d.js')
         expect(opt.input['z/t']).toContain(sampleFolder + 'second-file.js')
@@ -139,6 +138,15 @@ describe('folder input plugin', function () {
 
       it('keys with globs and individual filenames to no longer contain the globs', function () {
         expect(opt.input['z/t']).not.toContain(sampleFolder + 'array-test/**')
+      })
+    })
+
+    describe('when provided with an invalid input specifications', function () {
+      it('throws', function () {
+        const opt = {
+          input: () => { }
+        }
+        expect(() => hook(opt)).toThrowError(/.*failed to understand.*/)
       })
     })
   })

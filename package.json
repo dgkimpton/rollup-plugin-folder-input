@@ -1,8 +1,9 @@
 {
   "name": "rollup-plugin-folder-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rollup plugin to allow specification of 'input' array using globs",
   "main": "src/index.js",
+  "type": "module",
   "exports": {
     "import": "./lib/index.mjs",
     "require": "./lib/index.cjs"
@@ -12,10 +13,7 @@
     "lib/index.cjs"
   ],
   "scripts": {
-    "prebuild-tests": "trash ./.tests/**/*",
-    "build-tests": "rollup -c rollup.testing.config.js",
-    "pretest": "npm run build-tests",
-    "test": "jasmine --config=jasmine.json",
+    "test": "jest",
     "clean-build": "trash ./lib/**/*",
     "prebuild": "npm run clean-build && npm run test",
     "build": "rollup -c rollup.build.config.js"
@@ -39,12 +37,35 @@
   },
   "homepage": "https://github.com/dgkimpton/rollup-plugin-folder-input#readme",
   "devDependencies": {
-    "jasmine": "^3.7.0",
+    "@babel/preset-env": "^7.14.4",
+    "jest": "^27.0.3",
     "rollup": "^2.50.3",
     "standard": "^16.0.3",
     "trash-cli": "^4.0.0"
   },
   "dependencies": {
     "fast-glob": "^3.2.5"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageProvider": "v8",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/spec/**/*.[sS]pec.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": "auto"
+        }
+      ]
+    ]
   }
 }

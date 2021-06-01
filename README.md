@@ -1,6 +1,6 @@
 # rollup-plugin-folder-input
 ## Overview
-[Rollup](https://github.com/rollup/rollup) plugin to allow specification of 'input' array using globs
+[Rollup](https://github.com/rollup/rollup) plugin to allow specification of 'input' array using globs, e.g. `input:'./**/*.js'`
 
 ### Motivation
 Maintaining arrays of input files in the Rollup config requires additional thinking when adding a file to a site.  
@@ -60,21 +60,22 @@ npx rollup -c rollup.config.js
 
 For details on the glob format see the [fast-glob documentation](https://github.com/mrmlnc/fast-glob#pattern-syntax)
 
-## Note for contributors
-
-The tests are written in Jasmine and themselves use rollup in a pre-build step to make sure they run on Node.
-
-To run the unit tests on save the vscode plugin https://github.com/pucelle/vscode-run-on-save is needed.
-On Windows, you need to make sure to configure the correct shell path in the global vscode settings, e.g.
-```
-	"runOnSave.shell": "C:\\Program Files\\Git\\bin\\bash.exe",
-```
-
 ## Contributing
-Bug reports and pull requests welcomed.
+Bug reports and pull requests welcomed - please be sure to include passing specification tests in any PR.
+
+The tests are run using [Jest](https://jestjs.io/) and written in Jasmine style (describe/it) using ECMAScript modules.
+
+A handy list of matchers is here: https://jestjs.io/docs/expect
+
+### NPM Commands
+* `npm run build` - to build the library  
+* `npm test` - to run the tests and update the coverage report
+
+To view the code coverage report after running the tests open [`./coverage/lcov-report/index.html`](./coverage/lcov-report/index.html) in a browser.
+
 
 ## Changelog
-See the [Releases section of our GitHub project][github_releases] for changelog for each release version.
+See the [Releases](https://github.com/dgkimpton/rollup-plugin-folder-input/releases) page for changelog for each release version.
 
 ## License
-This software is released under the terms of the MIT license.
+This software is released under the terms of the [MIT license](https://choosealicense.com/licenses/mit/).
