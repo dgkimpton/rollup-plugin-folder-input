@@ -41,10 +41,6 @@ describe('folder input plugin', function () {
       expect(hook.length).toBe(1)
     })
 
-    it('fails when no input option is provided', function () {
-      expect(() => { hook() }).toThrowError()
-    })
-
     describe('when provided a string input that is a filename', function () {
       it('doesn\'t change the input object', function () {
         const opt = { input: sampleFolder + 'single-file.js' }
@@ -141,12 +137,27 @@ describe('folder input plugin', function () {
       })
     })
 
-    describe('when provided with an invalid input specifications', function () {
-      it('throws', function () {
+    describe('input specifications are thrown as invalid when it is', function () {
+      it('not provided', function () {
+        expect(() => { hook() }).toThrowError()
+      })
+      it('anything other than a string, array, or object is provided', function () {
         const opt = {
           input: () => { }
         }
         expect(() => hook(opt)).toThrowError(/.*failed to understand.*/)
+      })
+      it('an object with no keys', function () {
+        const opt = {
+          input: {}
+        }
+        expect(() => hook(opt)).toThrowError(/.*no keys.*/)
+      })
+      it('an object with a key that is neither a string nor an array', function () {
+        const opt = {
+          input: { a: {} }
+        }
+        expect(() => hook(opt)).toThrowError(/.*input\["a"].*/)
       })
     })
   })
